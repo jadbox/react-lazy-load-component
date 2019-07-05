@@ -1,0 +1,84 @@
+{
+  "scripts": {
+    "build": "npm run lint && npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -p ./tsconfig.es5.cjs.json",
+    "build:esm": "tsc -p ./tsconfig.es9.esm.json",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "lint": "tslint -p ./tsconfig.json",
+    "cra:build": "cd examples/cra/ && pwd && npm run build",
+    "cra:start": "cd examples/cra/ && pwd && npm run start-for-cypress",
+    "cra:stop": "cd examples/cra/ && pwd && npm run kill-old-server",
+    "cypress:run": "echo \"Starting cypress...\" && cypress run",
+    "test": "npm run build:esm && npm run cra:stop && npm run cra:build && npm run cra:start && npm run cypress:run && npm run cra:stop",
+    "test-ci": "npm run build:esm && npm run cra:build && npm run cra:start && npm run cypress:run",
+    "prettier": "prettier --config ./.prettierrc --write \"{src,test,bin,lib,config}/**/*.{ts,json,css,html,md}\""
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.13",
+    "cypress": "^3.2.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "1.16.4",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.3"
+  },
+  "dependencies": {
+    "use-is-in-viewport": "^1.0.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ],
+    "*.{json,md,html,css}": [
+      "prettier --write",
+      "git add"
+    ],
+    ".circleci/config.yml": [
+      "prettier --write",
+      "circleci config validate",
+      "git add"
+    ]
+  },
+  "name": "react-lazy-load-component",
+  "description": "A react hook to use the IntersectionObserver declaratively in your React app.",
+  "version": "1.0.4",
+  "main": "built/es5-cjs/src/index.js",
+  "types": "built/es5-cjs/src/index.d.ts",
+  "module": "built/es9-esm/src/index.js",
+  "es": "built/es9-esm/src/index.js",
+  "main-es": "built/es9-esm/src/index.js",
+  "keywords": [
+    "react",
+    "hook",
+    "intersection observer",
+    "viewport"
+  ],
+  "author": "Jonathan Dunlap <jdunlap@outlook.com>",
+  "license": "MIT",
+  "directories": {
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jadbox/react-lazy-load-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jadbox/react-lazy-load-component/issues"
+  },
+  "homepage": "https://github.com/jadbox/react-lazy-load-component#readme"
+}
