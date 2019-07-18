@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["es2018", "dom", "dom.iterable"],
+    "lib": ["esnext", "dom", "dom.iterable"],
     "sourceMap": true,
     "jsx": "react",
     "project": "./",
@@ -12,7 +12,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-
+    "esModuleInterop": true,
+    "module": "esnext",
     "composite": true,
     "declaration": true,
     "declarationMap": true

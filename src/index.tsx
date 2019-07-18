@@ -62,7 +62,7 @@ export default function WaypointLazy(props: IProps) {
   return (
     <React.Suspense fallback={fallback}>
       <div ref={childRef}>
-        {state.seen ? <>{props.children}</> : <div style={{ width, height }} />}{' '}
+        {state.seen ? <>{props.children}</> : <div style={{ width, height }} />}
       </div>
     </React.Suspense>
   )
