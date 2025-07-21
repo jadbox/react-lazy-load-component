@@ -11,12 +11,12 @@
     "prettier": "^1.17.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
-    "react-scripts": "2.1.8"
+    "react-scripts": "5.0.1"
   },
   "devDependencies": {
     "serve": "^11.0.0",
     "typescript": "3.3.3",
-    "wait-on": "^3.2.0"
+    "wait-on": "^8.0.3"
   },
   "scripts": {
     "copy-hook": "cp ../../built/es9-esm/src/index.js src/use-is-in-viewport.js",
